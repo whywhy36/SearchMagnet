@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: utf-8
+  pool: 5
+  timeout: 5000
+  username: postgres
+  host: 192.168.1.101
+  port: 5432
+
+development:
+  <<: *default
+  database: torrents_copy
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: torrents_test4
+
+production:
+  <<: *default
+  database: torrents
