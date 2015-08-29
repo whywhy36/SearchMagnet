@@ -1,0 +1,22 @@
+<h1> Result for <%= @keyword %></h1>
+
+<div class="result">
+  <div class="result_desc">
+    <p>Found <%= @results.size %> results.</p>
+  </div>
+  <div class="result_list">
+    <% @results.each do |result| %>
+        <div class="result_item">
+          <div class="result_item_name">
+            <%= link_to result.name, :controller => 'search', :action => 'details', :id => result.slug %>
+          </div>
+          <div class="result_item_details">
+            <p><%= result.files %></p>
+          </div>
+          <div class="result_item_descirption">
+            <p><%= result.magnet_uri %></p>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

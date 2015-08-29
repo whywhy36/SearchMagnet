@@ -2,8 +2,15 @@ require_relative '../models/torrent'
 
 class SearchController < ApplicationController
   def index
-    @torrent = Torrent.first
-    keyword = 'nirvana'
-    @result_torrent = Torrent.search(keyword)
+
+  end
+
+  def result
+    @keyword = params[:keyword]
+    @results = Torrent.search(@keyword)
+  end
+
+  def details
+    @torrent = Torrent.friendly.find(params[:id])
   end
 end

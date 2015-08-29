@@ -1,8 +1,11 @@
 require 'pg_search'
+require 'friendly_id'
 
 class Torrent < ActiveRecord::Base
-  include PgSearch
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
+  include PgSearch
   pg_search_scope(
       :search,
       against: %i(
