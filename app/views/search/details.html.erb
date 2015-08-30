@@ -1,6 +1,35 @@
-<h1> Details for <%= @torrent.name %></h1>
-<div class="torrent_details">
-  <div class="torrent_details_other">
-    <%= @torrent.inspect %>
+
+<div class="container">
+  <div class="torrent_details">
+    <h3><%= @torrent.name %></h3>
+
+    <div class="torrent_files">
+        <b>Files: </b>
+        <% @torrent.file_descriptions(false).each do |file| %>
+            <div class="torrent_details_file">
+              <span><%= file[:path] %></span>
+              <span><%= file[:size] %></span>
+            </div>
+        <% end %>
+    </div>
+
+    <div class="details_size">
+      <b>Size:</b> <%= @torrent.pretty_size %>
+    </div>
+
+    <div class="details_created_time">
+      <b>Created:</b> <%= time_ago_in_words @torrent.create_at %> ago
+    </div>
+    <div class="details_updated_time">
+        <b>Updated:</b> <%= time_ago_in_words @torrent.updated_at %> ago
+    </div>
+
+    <div class=""></div>
+
+    <b>Magnet Link:</b>
+    <div class="magnet_link">
+        <%= @torrent.magnet_uri %>
+    </div>
+
   </div>
 </div>

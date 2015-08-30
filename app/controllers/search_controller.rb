@@ -7,7 +7,7 @@ class SearchController < ApplicationController
 
   def result
     @keyword = params[:keyword]
-    @results = Torrent.search(@keyword)
+    @results = Torrent.search(@keyword).paginate(:page => params[:page], :per_page => 10)
   end
 
   def details

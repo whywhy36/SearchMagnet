@@ -1,3 +1,206 @@
 // Place all the styles related to the search controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// common
+div.container {
+  width: 100%;
+  min-width: 980px;
+}
+
+#navbar-logo {
+  margin-left: 10px;
+  margin-right: 15px;
+  width: 90px;
+  height: 50px;
+  background-image: url(image_path('navbar_logo_placeholder.png'));
+}
+
+
+// pagination
+.digg_pagination {
+  background: white;
+  cursor: default;
+  a, span, em {
+    padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-right: 1px;
+  }
+  .disabled {
+    color: #999999;
+    border: 1px solid #dddddd;
+  }
+  .current {
+    font-style: normal;
+    font-weight: bold;
+    background: #2e6ab1;
+    color: white;
+    border: 1px solid #2e6ab1;
+  }
+  a {
+    text-decoration: none;
+    color: #105cb6;
+    border: 1px solid #9aafe5;
+    &:hover, &:focus {
+      color: #000033;
+      border-color: #000033;
+    }
+  }
+  .page_info {
+    background: #2e6ab1;
+    color: white;
+    padding: 0.4em 0.6em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center;
+    b {
+      color: #000033;
+      background: #2e6ab1 + 60;
+      padding: 0.1em 0.25em;
+    }
+  }
+  /* self-clearing method: */
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  * html & {
+    height: 1%;
+  }
+  *:first-child+html & {
+    overflow: hidden;
+  }
+}
+
+
+// search index page
+#logo {
+  margin-left: auto;
+  margin-right: auto;
+  width: 360px;
+  height: 200px;
+  background-image: url(image_path('logo_placeholder.png'));
+}
+
+.search{
+  width: 100%;
+}
+
+.search-box {
+  width: 650px;
+  margin: 0 auto;
+  height: 35px;
+}
+
+.search-box {
+  .search-label {
+    width: 0px;
+    display: none;
+  }
+
+  .search-button {
+    width: 100px;
+    background-color: dodgerblue;
+    color: white;
+  }
+}
+
+.hot {
+  width: 650px;
+  margin: 0 auto;
+  align-content: middle;
+}
+
+// search result page
+
+.result {
+  width: 80%;
+  margin-left: 120px;
+}
+
+.result_desc {
+  width: 860px;
+  font-style: bold;
+}
+
+.result_list {
+  width: 860px;
+  margin-bottom: 20px;
+
+  .result_item {
+    margin-bottom: 20px;
+
+
+    .result_item_name {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .result_item_files {
+
+      .result_item_file {
+        font-size: small;
+
+      }
+
+    }
+
+    .result_item_description {
+      margin: 5px auto;
+
+      span {
+        padding-right: 15px;
+        color: gray;
+      }
+    }
+
+  }
+
+
+}
+
+
+// search details page
+
+.torrent_details {
+  width: 80%;
+  margin-left: 120px;
+
+  h3 {
+    line-break: word;
+  }
+
+  .torrent_files {
+
+    margin-bottom: 7px;
+    .torrent_details_file {
+      margin-left: 10px;
+      span {
+        margin-right: 10px;
+        font-size: 15px;
+      }
+    }
+  }
+
+  .details_size {
+    margin-bottom: 5px;
+  }
+
+  .details_created_time {
+    margin-bottom: 5px;
+  }
+
+  .details_updated_time {
+    margin-bottom: 5px;
+  }
+
+  .magnet_link {
+    background-color: gainsboro;
+    padding: 20px 10px;
+    border-radius: 5px
+  }
+}

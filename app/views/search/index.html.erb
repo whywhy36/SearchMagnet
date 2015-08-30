@@ -1,8 +1,14 @@
-<h1>BT Search</h1>
-<div>
-    <%= form_tag('/search/result', method: 'get') do %>
-        <%= label_tag(:keyword, '') %>
-        <%= text_field_tag(:keyword) %>
-        <%= submit_tag('Search') %>
-    <% end %>
+
+<div id="logo"></div>
+<%= form_tag('/search/result', method: 'get', class: 'search') do %>
+    <div class="search-box input-group">
+        <%= label_tag(:keyword, '', class: 'search-label') %>
+        <%= text_field_tag(:keyword, nil, class: 'form-control') %>
+        <span class="input-group-btn">
+            <%= submit_tag('Search', class: 'btn search-button') %>
+        </span>
+    </div>
+<% end %>
+<div class="hot">
+    <p> TODO: HOT torrents in DHT network.</p>
 </div>

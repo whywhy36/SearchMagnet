@@ -1,22 +1,40 @@
-<h1> Result for <%= @keyword %></h1>
-
-<div class="result">
-  <div class="result_desc">
-    <p>Found <%= @results.size %> results.</p>
-  </div>
-  <div class="result_list">
-    <% @results.each do |result| %>
-        <div class="result_item">
-          <div class="result_item_name">
-            <%= link_to result.name, :controller => 'search', :action => 'details', :id => result.slug %>
+<div class="container">
+  <div class="result">
+    <div class="result_desc">
+      <p>Found <%= @results.total_entries %> results for keyword "<%= @keyword %>".</p>
+    </div>
+    <div class="result_list">
+      <% @results.each do |result| %>
+          <div class="result_item">
+            <div class="result_item_name">
+              <%= link_to result.name, :controller => 'search', :action => 'details', :id => result.slug %>
+            </div>
+            <div class="result_item_files">
+              <% result.file_descriptions.each do |file| %>
+                <div class="result_item_file">
+                  <span><%= file[:path] %></span>
+                  <span><%= file[:size] %></span>
+                </div>
+              <% end %>
+              <div class="result_item_file">
+                <span>More ...</span>
+              </div>
+            </div>
+            <div class="result_item_description">
+              <span>Files: <%= result.file_number %></span>
+              <span>Size: <%= result.pretty_size %></span>
+              <span>Updated: <%= time_ago_in_words(result.updated_at) %> ago</span>
+              <span>
+                <a href=<%= "#{result.magnet_uri}" %> class="">
+                    <%= icon('magnet') %> Magnet Link
+                </a>
+              </span>
+            </div>
           </div>
-          <div class="result_item_details">
-            <p><%= result.files %></p>
-          </div>
-          <div class="result_item_descirption">
-            <p><%= result.magnet_uri %></p>
-          </div>
-        </div>
-    <% end %>
+      <% end %>
+    </div>
+    <div class="digg_pagination">
+      <%= will_paginate @results, :container => false %>
+    </div>
   </div>
 </div>

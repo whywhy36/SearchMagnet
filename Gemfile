@@ -9,6 +9,11 @@ gem 'pg'
 gem 'pg_search', '1.0.4'
 
 gem 'friendly_id', '~> 5.1.0'
+gem 'filesize'
+gem 'will_paginate', '~> 3.0.6'
+
+gem 'bootstrap-sass', '~> 3.3.5'
+gem 'font-awesome-sass'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
