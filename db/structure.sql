@@ -77,15 +77,6 @@ ALTER SEQUENCE friendly_id_slugs_id_seq OWNED BY friendly_id_slugs.id;
 
 
 --
--- Name: schema_info; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE schema_info (
-    version integer DEFAULT 0 NOT NULL
-);
-
-
---
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -100,16 +91,17 @@ CREATE TABLE schema_migrations (
 
 CREATE TABLE torrents (
     id integer NOT NULL,
-    name text NOT NULL,
-    files text,
-    data_hash text NOT NULL,
-    length text,
-    category text,
-    magnet_uri text NOT NULL,
-    metadata text NOT NULL,
+    name character varying NOT NULL,
+    files character varying,
+    data_hash character varying NOT NULL,
+    length character varying,
+    category character varying,
+    magnet_uri character varying NOT NULL,
+    metadata character varying NOT NULL,
     counter integer,
-    create_at timestamp without time zone NOT NULL,
+    created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
+    source character varying,
     blocked boolean,
     tsv tsvector,
     slug character varying
@@ -226,6 +218,10 @@ CREATE TRIGGER tsvectorupdate BEFORE INSERT OR UPDATE ON torrents FOR EACH ROW E
 --
 
 SET search_path TO "$user",public;
+
+INSERT INTO schema_migrations (version) VALUES ('20150801093720');
+
+INSERT INTO schema_migrations (version) VALUES ('20150801094627');
 
 INSERT INTO schema_migrations (version) VALUES ('20150829011234');
 
