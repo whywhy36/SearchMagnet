@@ -25,6 +25,20 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 SET search_path = public, pg_catalog;
 
+--
+-- Name: torrents_search_trigger(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION torrents_search_trigger() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+	begin
+		new.tsv := to_tsvector(coalesce(new.name, ''));
+		return new;
+	end
+$$;
+
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -97,6 +111,7 @@ CREATE TABLE torrents (
     create_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     blocked boolean,
+    tsv tsvector,
     slug character varying
 );
 
@@ -179,10 +194,31 @@ CREATE INDEX index_friendly_id_slugs_on_sluggable_type ON friendly_id_slugs USIN
 
 
 --
+-- Name: index_torrents_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_torrents_on_slug ON torrents USING btree (slug);
+
+
+--
+-- Name: tsv_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX tsv_index ON torrents USING gin (tsv);
+
+
+--
 -- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: tsvectorupdate; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER tsvectorupdate BEFORE INSERT OR UPDATE ON torrents FOR EACH ROW EXECUTE PROCEDURE torrents_search_trigger();
 
 
 --
