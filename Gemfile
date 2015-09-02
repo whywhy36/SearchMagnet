@@ -8,12 +8,17 @@ gem 'rails', '4.2.4'
 gem 'pg'
 gem 'pg_search', '1.0.4'
 
+gem 'redis'
+
 gem 'friendly_id', '~> 5.1.0'
 gem 'filesize'
 gem 'will_paginate', '~> 3.0.6'
 
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'font-awesome-sass'
+
+gem 'bencode'
+gem 'pry'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

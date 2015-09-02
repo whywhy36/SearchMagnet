@@ -1,0 +1,11 @@
+name: BulkTorrentsImportOps
+author: whywhy36
+version: 0.0.1
+
+source:
+  path: /Users/yuanzhuang/temp/torrents
+
+logging:
+  output: /tmp/search_magnet/
+  level: INFO
+

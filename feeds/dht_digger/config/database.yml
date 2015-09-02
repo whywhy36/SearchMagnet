@@ -1,0 +1,15 @@
+name: DHTDiggerOps
+author: whywhy36
+version: 0.0.1
+
+redis:
+  host: 192.168.1.111
+  port: 6379
+  db: 11
+  message_queue: list_name
+  metadata: metadata
+  infohash_set: info_hash_set
+
+logging:
+  output: /tmp/search_magnet/
+  level: INFO

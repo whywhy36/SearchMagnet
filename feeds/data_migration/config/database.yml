@@ -1,0 +1,17 @@
+name: DataMigrationOps
+author: whywhy36
+version: 0.0.1
+
+source:
+  host: 192.168.1.101
+  port: 5432
+  username: postgres
+  password:
+  database: torrents_copy
+  encoding: utf-8
+
+logging:
+  output: /tmp/search_magnet/
+  level: INFO
+
+
