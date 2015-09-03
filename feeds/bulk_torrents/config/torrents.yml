@@ -1,8 +1,9 @@
 name: BulkTorrentsImportOps
+source: torrent
 author: whywhy36
 version: 0.0.1
 
-source:
+torrents_source:
   path: /Users/yuanzhuang/temp/torrents
 
 logging:

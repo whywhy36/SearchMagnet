@@ -34,6 +34,7 @@ module SearchMagnet
         config = SourceConfig.get_instance
 
         name           = config['name']
+        @source        = config['source']
         @source_config = config['source']
         logging_config = config['logging']
 
@@ -55,7 +56,8 @@ module SearchMagnet
                 :metadata   => torrent.metadata,
                 :counter    => torrent.counter,
                 :created_at => torrent.create_at,
-                :updated_at => torrent.updated_at
+                :updated_at => torrent.updated_at,
+                :source     => @source
             )
             callback.call(target_torrent) if callback
           else

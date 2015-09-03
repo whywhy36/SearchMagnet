@@ -14,6 +14,7 @@ module SearchMagnet
         @config = YAML.load_file("#{File.dirname(__FILE__)}/config/database.yml")
 
         @name           = @config['name']
+        @source         = @config['source']
         redis_config    = @config['redis']
         logging_config  = @config['logging']
 
@@ -57,7 +58,8 @@ module SearchMagnet
                 :metadata   => item_string,
                 :counter    => 1,
                 :created_at => create_time,
-                :updated_at => DateTime.now
+                :updated_at => DateTime.now,
+                :source     => @source
             )
           else
             # should not be here
