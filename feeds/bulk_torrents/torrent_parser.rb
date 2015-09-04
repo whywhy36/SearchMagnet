@@ -39,6 +39,10 @@ module SearchMagnet
         info['data_hash'] = Digest::MD5.hexdigest(meta_info['pieces'])
         info['name'] = meta_info['name'].to_s
 
+        # calculate info_hash (to construct magnet link)
+        info_hash = Digest::SHA1.hexdigest(meta['info'].bencode)
+        info['magnet_uri'] = "magnet:?xt=urn:btih:#{info_hash}"
+
         info
       end
     end

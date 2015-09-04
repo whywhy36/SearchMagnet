@@ -4,7 +4,7 @@ author: whywhy36
 version: 0.0.1
 
 torrents_source:
-  path: /Users/yuanzhuang/temp/torrents
+  path: /Users/yuanzhuang/Desktop/abc
 
 logging:
   output: /tmp/search_magnet/

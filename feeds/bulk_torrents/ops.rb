@@ -46,10 +46,11 @@ module SearchMagnet
 
         torrent = parse_torrent(meta)
 
+        binding.pry
+
         target_torrent = Torrent.where('data_hash' => torrent['data_hash'])
 
         if target_torrent.size == 0
-          puts torrent.inspect
           torrent_object = Torrent.create(
               :name       => torrent['name'].to_s,
               :data_hash  => torrent['data_hash'],
