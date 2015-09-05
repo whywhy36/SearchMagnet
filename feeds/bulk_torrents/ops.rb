@@ -46,7 +46,7 @@ module SearchMagnet
 
         torrent = parse_torrent(meta)
 
-        binding.pry
+        #binding.pry
 
         target_torrent = Torrent.where('data_hash' => torrent['data_hash'])
 
@@ -56,7 +56,7 @@ module SearchMagnet
               :data_hash  => torrent['data_hash'],
               :length     => torrent['length'],
               :metadata   => torrent.to_json,
-              :magnet_uri => '',
+              :magnet_uri => torrent['magnet_uri'],
               :counter    => 1,
               :created_at => torrent['created_at'],
               :updated_at => DateTime.now,
