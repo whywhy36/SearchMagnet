@@ -42,8 +42,8 @@ source:
 ```
 
 #### dht digger
-This feeder consumes the metadata produced by [dht digger](to add link). DHT Digger provide realtime updates about DHT network and torrents information, please refer to 
-this [document](to add link) for more details. 
+This feeder consumes the metadata produced by [dht digger](https://github.com/whywhy36/DHTDigger). DHT Digger provide realtime updates about DHT network and torrents information, please refer to 
+this [document](http://www.bittorrent.org/beps/bep_0000.html) for more details. 
 
 #### customize your own feede
 You can easily import your existing torrents metdata by following the database schema.
